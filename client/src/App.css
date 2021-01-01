@@ -13,6 +13,9 @@
   margin: 0;
   padding: 0;
 }
+.bg-light {
+  background: var(--light-color);
+}
 .container {
   margin: auto;
   overflow: hidden;
@@ -145,4 +148,32 @@ ul {
   float: right;
   width: 40%;
   padding: 2rem;
+}
+
+.container__item {
+  padding: 2rem;
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.desc {
+  margin-top: 1.2rem;
+  align-items: center;
+}
+.desc__dop {
+  margin-top: 1rem;
+}
+
+.desc__cp {
+  margin-top: 1rem;
+}
+.desc__sp {
+  margin-top: 1rem;
+}
+.desc__city {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.medium {
+  width: 50vw;
 }
