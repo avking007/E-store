@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Moment from 'react-moment';
 
 function Item({ history }) {
   const goBackHandler = () => {
@@ -21,7 +22,9 @@ function Item({ history }) {
           </div>
           <div className='desc__dop'>
             <h4>Date of Purchase</h4>
-            <p>22/05/2012</p>
+            <p>
+              <Moment format='DD/MM/YYYY'>2021-01-19</Moment>
+            </p>
           </div>
           <div className='desc__cp'>
             <h4>Seller's Cost Price</h4>
