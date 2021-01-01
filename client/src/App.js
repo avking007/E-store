@@ -19,8 +19,8 @@ function App() {
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/products' component={Products} />
-            <Route exact path='/:pid' component={Item} />
             <Route exact path='/sell' component={Sell} />
+            <Route exact path='/product/:pid' component={Item} />
           </Switch>
         </BrowserRouter>
       </div>
