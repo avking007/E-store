@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import Moment from 'react-moment';
-import { get_item, clear_item } from '../../actions/item';
+import { get_item, clear_item, buy_item } from '../../actions/item';
 import { connect } from 'react-redux';
 
-function Item({ history, match, get_item, item, isAuth, clear_item, loading }) {
+function Item({
+  history,
+  match,
+  get_item,
+  item,
+  isAuth,
+  clear_item,
+  buy_item,
+}) {
   const goBackHandler = () => {
     clear_item();
     history.push('/products');
@@ -12,6 +20,13 @@ function Item({ history, match, get_item, item, isAuth, clear_item, loading }) {
   useEffect(() => {
     get_item(match.params.pid);
   }, [match.params.pid, get_item]);
+
+  const buyHandler = () => {
+    if (window.confirm('Are you sure you want to buy this item?')) {
+      buy_item(match.params.pid);
+      history.push('/dashboard');
+    }
+  };
 
   if (!isAuth) {
     return <Redirect to='/login' />;
@@ -49,7 +64,9 @@ function Item({ history, match, get_item, item, isAuth, clear_item, loading }) {
             <p>{item.city}</p>
           </div>
         </div>
-        <button className='btn btn-primary'>Buy</button>
+        <button className='btn btn-primary' onClick={buyHandler}>
+          Buy
+        </button>
       </div>
     </div>
   );
@@ -57,6 +74,7 @@ function Item({ history, match, get_item, item, isAuth, clear_item, loading }) {
 const mapper = (state) => ({
   item: state.items.item,
   isAuth: state.user.isAuth,
-  loading: state.items.loading,
 });
-export default connect(mapper, { get_item, clear_item })(withRouter(Item));
+export default connect(mapper, { get_item, clear_item, buy_item })(
+  withRouter(Item)
+);
