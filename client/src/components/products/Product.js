@@ -1,20 +1,30 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+function Product({ items, history }) {
+  const OpenItemHandler = (pid) => {
+    history.push(`/product/${pid}`);
+  };
 
-function Product() {
-  return (
-    <div className='container bg-primary'>
+  const disp = items.map((item) => (
+    <div
+      className='container bg-primary'
+      key={item._id}
+      onClick={() => OpenItemHandler(item._id)}
+    >
       <div className='container__left'>
         {/* Title */}
-        <h2>Heator</h2>
+        <h2>{item.title}</h2>
         {/* Desc */}
-        <small>Details : Working Heator</small>
+        <small>Details : {item.desc}</small>
+        <small>Available in : {item.city}</small>
       </div>
       <div className='container__right'>
         <h3>Price</h3>
-        <p>Rs: 500</p>
+        <p>Rs: {item.sell_price}</p>
       </div>
     </div>
-  );
+  ));
+  return disp;
 }
 
-export default Product;
+export default withRouter(Product);
