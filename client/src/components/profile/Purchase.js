@@ -4,7 +4,7 @@ function Purchase({ purchase }) {
   const p_history = purchase.map((item) => (
     <tr key={item._id}>
       <td>{item.title}</td>
-      <td>{item.cost_price}</td>
+      <td>Rs {item.cost_price} /-</td>
     </tr>
   ));
   return (
