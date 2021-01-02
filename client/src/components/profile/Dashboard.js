@@ -13,6 +13,13 @@ function Dashboard({ isAuth, loading, user }) {
   ) : (
     <div>
       <div className='container'>
+        <h1 className='large text-primary'>Dashboard</h1>
+        <p className='lead'>
+          <i className='fas fa-user' /> {'  '}Welcome{' '}
+          {user && user.first_name + ' ' + user.last_name}
+        </p>
+      </div>
+      <div className='container'>
         <h2>Purchase History</h2>
         <br />
         {user && user.buy.length > 0 ? (
