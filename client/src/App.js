@@ -9,8 +9,18 @@ import Products from './components/products/Products';
 import Item from './components/products/Item';
 import Sell from './components/products/Sell';
 import store from './store';
+import { useEffect } from 'react';
+import { loadUser } from './actions/auth';
+import { setAuthToken } from './utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   return (
     <Provider store={store}>
       <div className='app'>
