@@ -44,10 +44,12 @@ function Item({
           <h2>{item.title}</h2>
         </div>
         <div className='desc'>
-          <div className='desc__details'>
-            <h4>Details</h4>
-            <p>{item.desc}</p>
-          </div>
+          {item.desc && (
+            <div className='desc__details'>
+              <h4>Details</h4>
+              <p>{item.desc}</p>
+            </div>
+          )}
           <div className='desc__dop'>
             <h4>Date of Purchase</h4>
             <p>
