@@ -63,7 +63,7 @@ router.get('/items', auth, async (req, res) => {
 // route /user/avail_items
 // access  private
 // desc get items that you can buy
-router.get(
+router.post(
   '/avail_items',
   [auth, check('city', 'City is required').not().isEmpty()],
   async (req, res) => {
@@ -118,6 +118,19 @@ router.put('/:pid/buy', auth, async (req, res) => {
     await Item.deleteOne({ _id: req.params.pid });
 
     return res.send('Item bought');
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('Server Error.');
+  }
+});
+
+// route /user/avail_items
+// access  private
+// desc get item by id
+router.get('/:pid', auth, async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.pid);
+    return res.json(item);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Server Error.');
