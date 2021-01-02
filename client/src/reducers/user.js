@@ -1,5 +1,8 @@
 import {
   AUTH_ERROR,
+  ITEM_BOUGHT,
+  ITEM_BOUGHT_FAIL,
+  ITEM_SELL_FAIL,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
@@ -26,7 +29,13 @@ export default function user(state = initState, action) {
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
       return { ...state, isAuth: true, token: payload.token };
+    case ITEM_BOUGHT:
+      return {
+        ...state,
+        user: { ...state.user, buy: [...state.user.buy, payload] },
+      };
 
+    case ITEM_BOUGHT_FAIL:
     case REGISTER_FAIL:
     case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
@@ -34,7 +43,7 @@ export default function user(state = initState, action) {
     case AUTH_ERROR:
       localStorage.removeItem('token');
       return { isAuth: false, loading: true, user: null, token: null };
-
+    case ITEM_SELL_FAIL:
     default:
       return state;
   }
