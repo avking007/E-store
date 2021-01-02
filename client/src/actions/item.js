@@ -53,7 +53,7 @@ export const sell_item = (formData) => async (dispatch) => {
     dispatch({ type: ITEM_SELL });
     dispatch(set_alert('success', 'Item added for sale.'));
   } catch (error) {
-    const err = error.response.data;
+    const err = error.response.data.msg;
     if (err) {
       err.forEach((alert) => dispatch(set_alert('danger', alert.msg)));
     }

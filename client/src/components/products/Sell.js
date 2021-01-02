@@ -34,6 +34,7 @@ function Sell({ sell_item, isAuth }) {
       <form className='form' onSubmit={submitHandler}>
         <div className='form-group'>
           <input
+            required
             type='text'
             name='title'
             placeholder='Product Name'
@@ -54,6 +55,7 @@ function Sell({ sell_item, isAuth }) {
 
         <div className='form-group'>
           <input
+            required
             type='text'
             name='DOP'
             placeholder='Enter Date of Purchase'
@@ -68,6 +70,7 @@ function Sell({ sell_item, isAuth }) {
 
         <div className='form-group'>
           <input
+            required
             type='text'
             name='cost_price'
             onChange={(e) => changeHandler(e)}
@@ -78,6 +81,7 @@ function Sell({ sell_item, isAuth }) {
 
         <div className='form-group'>
           <input
+            required
             type='text'
             name='sell_price'
             onChange={(e) => changeHandler(e)}

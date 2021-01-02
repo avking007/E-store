@@ -14,10 +14,12 @@ router.post(
   '/sell',
   [
     auth,
-    check('title', 'Product title is required').not().isEmpty(),
-    check('DOP', 'Date of purchase is required').not().isEmpty(),
-    check('cost_price', 'Cost price is required').not().isEmpty(),
-    check('sell_price', 'Selling price is required').not().isEmpty(),
+    [
+      check('title', 'Product title is required').not().isEmpty(),
+      check('DOP', 'Date of purchase is required').not().isEmpty(),
+      check('cost_price', 'Cost price is required').not().isEmpty(),
+      check('sell_price', 'Selling price is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const err = validationResult(req);
