@@ -103,7 +103,7 @@ router.put('/:pid/buy', auth, async (req, res) => {
     if (prod.city !== user.city) {
       return res
         .status(400)
-        .send('Cannot buy this item as it is not available in ypur city.');
+        .send('Cannot buy this item as it is not available in your city.');
     }
     // remove item from seller's sell[]
     let seller = await User.findById(prod.seller).select('sell');

@@ -43,7 +43,9 @@ router.post(
       //check for existing user
       let user_check = await User.findOne({ $or: [{ email }, { mob }] });
       if (user_check) {
-        return res.status(400).send('User already exists.');
+        return res
+          .status(400)
+          .json({ error: [{ msg: 'User already exists.' }] });
       }
 
       let user = {
@@ -105,11 +107,15 @@ router.post(
       const { email, password } = req.body;
       const check = await User.findOne({ email });
       if (!check) {
-        return res.status(400).send('User does not exists.');
+        return res
+          .status(400)
+          .json({ error: [{ msg: 'User does not exists.' }] });
       }
       const pass = await bycrpt.compare(password, check.password);
       if (!pass) {
-        return res.status(401).send('Invalid username or password');
+        return res
+          .status(401)
+          .send({ error: [{ msg: 'Invalid username or password' }] });
       }
       const payload = {
         user: {
