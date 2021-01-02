@@ -35,7 +35,6 @@ export default function user(state = initState, action) {
         user: { ...state.user, buy: [...state.user.buy, payload] },
       };
 
-    case ITEM_BOUGHT_FAIL:
     case REGISTER_FAIL:
     case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
@@ -43,6 +42,8 @@ export default function user(state = initState, action) {
     case AUTH_ERROR:
       localStorage.removeItem('token');
       return { isAuth: false, loading: true, user: null, token: null };
+
+    case ITEM_BOUGHT_FAIL:
     case ITEM_SELL_FAIL:
     default:
       return state;
