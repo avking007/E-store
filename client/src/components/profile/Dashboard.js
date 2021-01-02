@@ -1,40 +1,32 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import Purchase from './Purchase';
+import { Redirect } from 'react-router-dom';
 
-function Dashboard() {
-  return (
+function Dashboard({ isAuth, loading, user }) {
+  if (!isAuth) {
+    return <Redirect to='/login' />;
+  }
+  return loading ? null : (
     <div>
       <div className='container'>
         <h2>Purchase History</h2>
         <br />
-        <table className='table'>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Purchase price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Abc</td>
-              <td>def</td>
-            </tr>
-            <tr>
-              <td>Abc</td>
-              <td>def</td>
-            </tr>
-            <tr>
-              <td>Abc</td>
-              <td>def</td>
-            </tr>
-            <tr>
-              <td>Abc</td>
-              <td>def</td>
-            </tr>
-          </tbody>
-        </table>
+        {user && user.buy.length > 0 ? (
+          <Purchase purchase={user.buy} />
+        ) : (
+          <Fragment>
+            <h3>No Purchases till now!</h3>
+          </Fragment>
+        )}
       </div>
     </div>
   );
 }
+const mapper = (state) => ({
+  user: state.user.user,
+  loading: state.user.loading,
+  isAuth: state.user.isAuth,
+});
 
-export default Dashboard;
+export default connect(mapper)(Dashboard);
