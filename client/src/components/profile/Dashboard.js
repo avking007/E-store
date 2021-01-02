@@ -2,12 +2,15 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Purchase from './Purchase';
 import { Redirect } from 'react-router-dom';
+import Spinner from '../layout/Spinner';
 
 function Dashboard({ isAuth, loading, user }) {
   if (!isAuth) {
     return <Redirect to='/login' />;
   }
-  return loading ? null : (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
       <div className='container'>
         <h2>Purchase History</h2>

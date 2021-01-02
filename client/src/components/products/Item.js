@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import Moment from 'react-moment';
 import { get_item, clear_item, buy_item } from '../../actions/item';
 import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
 
 function Item({
   history,
@@ -31,7 +32,9 @@ function Item({
   if (!isAuth) {
     return <Redirect to='/login' />;
   }
-  return !item ? null : (
+  return !item ? (
+    <Spinner />
+  ) : (
     <div className='container medium'>
       <button className='btn btn-primary' onClick={goBackHandler}>
         Go Back
