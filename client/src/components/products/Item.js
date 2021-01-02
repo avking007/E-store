@@ -1,42 +1,52 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import Moment from 'react-moment';
+import { get_item, clear_item } from '../../actions/item';
+import { connect } from 'react-redux';
 
-function Item({ history }) {
+function Item({ history, match, get_item, item, isAuth, clear_item, loading }) {
   const goBackHandler = () => {
+    clear_item();
     history.push('/products');
   };
-  return (
+  useEffect(() => {
+    get_item(match.params.pid);
+  }, [match.params.pid, get_item]);
+
+  if (!isAuth) {
+    return <Redirect to='/login' />;
+  }
+  return !item ? null : (
     <div className='container medium'>
       <button className='btn btn-primary' onClick={goBackHandler}>
         Go Back
       </button>
       <div className='container__item bg-light'>
         <div className='header'>
-          <h2>Heator</h2>
+          <h2>{item.title}</h2>
         </div>
         <div className='desc'>
           <div className='desc__details'>
             <h4>Details</h4>
-            <p>Working heator</p>
+            <p>{item.desc}</p>
           </div>
           <div className='desc__dop'>
             <h4>Date of Purchase</h4>
             <p>
-              <Moment format='DD/MM/YYYY'>2021-01-19</Moment>
+              <Moment format='DD/MM/YYYY'>{item.DOP}</Moment>
             </p>
           </div>
           <div className='desc__cp'>
             <h4>Seller's Cost Price</h4>
-            <p>Rs 300 /-</p>
+            <p>Rs {item.cost_price} /-</p>
           </div>
           <div className='desc__sp'>
             <h4>Seller's Price</h4>
-            <p>Rs 250 /-</p>
+            <p>Rs {item.sell_price} /-</p>
           </div>
           <div className='desc__city'>
             <h4>Seller's City</h4>
-            <p>Lucknow</p>
+            <p>{item.city}</p>
           </div>
         </div>
         <button className='btn btn-primary'>Buy</button>
@@ -44,5 +54,9 @@ function Item({ history }) {
     </div>
   );
 }
-
-export default withRouter(Item);
+const mapper = (state) => ({
+  item: state.items.item,
+  isAuth: state.user.isAuth,
+  loading: state.items.loading,
+});
+export default connect(mapper, { get_item, clear_item })(withRouter(Item));
