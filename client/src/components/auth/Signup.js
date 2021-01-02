@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signup } from '../../actions/auth';
+import { Redirect } from 'react-router-dom';
 
-function Signup() {
+function Signup({ isAuth, signup }) {
   const [formData, setformData] = useState({
     first_name: '',
     last_name: '',
@@ -14,7 +17,7 @@ function Signup() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    signup(formData);
     setformData({
       first_name: '',
       last_name: '',
@@ -24,6 +27,9 @@ function Signup() {
       city: '',
     });
   };
+  if (isAuth) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <div className='container'>
       <h1>Signup</h1>
@@ -88,5 +94,8 @@ function Signup() {
     </div>
   );
 }
+const mapper = (state) => ({
+  isAuth: state.user.isAuth,
+});
 
-export default Signup;
+export default connect(mapper, { signup })(Signup);
