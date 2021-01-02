@@ -117,7 +117,7 @@ router.put('/:pid/buy', auth, async (req, res) => {
     // remove product from collection
     await Item.deleteOne({ _id: req.params.pid });
 
-    return res.send('Item bought');
+    return res.send({ item: user.buy[user.buy.length - 1] });
   } catch (error) {
     console.log(error);
     return res.status(500).send('Server Error.');
