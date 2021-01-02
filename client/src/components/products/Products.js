@@ -62,7 +62,7 @@ function Products({
               </Fragment>
             ) : (
               <Fragment>
-                <h3>Nothing available to buy!</h3>
+                <h3>Nothing available to buy in your city!</h3>
               </Fragment>
             )}
           </div>
@@ -75,7 +75,7 @@ function Products({
               </Fragment>
             ) : (
               <Fragment>
-                <h3>Nothing available to buy!</h3>
+                <h3>Nothing available to buy right now!</h3>
               </Fragment>
             )}
           </div>
