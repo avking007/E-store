@@ -43,9 +43,9 @@ Both Frontend ( React for frontend and redux and thunk for state management ) an
 
 #
 
-Live Demo:
+Live Demo (hosted on heroku):
 
-url
+https://glacial-springs-84575.herokuapp.com/
 
 #
 
