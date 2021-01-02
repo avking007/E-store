@@ -12,6 +12,7 @@ import store from './store';
 import { useEffect } from 'react';
 import { loadUser } from './actions/auth';
 import { setAuthToken } from './utils/setAuthToken';
+import Alert from './components/layout/Alert';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -28,6 +29,10 @@ function App() {
           <BrowserRouter>
             {/* navbar */}
             <Navbar />
+            <div className='container'>
+              <Alert />
+            </div>
+
             <Switch>
               <Route exact path='/' component={Login} />
               <Route exact path='/login' component={Login} />
