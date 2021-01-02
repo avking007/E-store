@@ -10,6 +10,7 @@ import {
   USER_LOADED,
 } from './types';
 import { setAuthToken } from '../utils/setAuthToken';
+import { set_alert } from './alert';
 
 // load user
 export const loadUser = () => async (dispatch) => {
@@ -37,7 +38,13 @@ export const login = (formData) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     dispatch(loadUser());
   } catch (error) {
-    console.log(error);
+    const err = error.response.data.error;
+    if (err) {
+      err.forEach((error) => {
+        dispatch(set_alert('danger', error.msg));
+      });
+    }
+
     dispatch({ type: LOGIN_FAIL });
   }
 };

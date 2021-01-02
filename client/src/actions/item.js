@@ -12,6 +12,7 @@ import {
   LOAD_RELEVANT,
   LOAD_RELEVANT_FAIL,
 } from './types';
+import { set_alert } from './alert';
 
 // get all items
 export const get_all = () => async (dispatch) => {
@@ -50,8 +51,12 @@ export const sell_item = (formData) => async (dispatch) => {
     const data = JSON.stringify(formData);
     await axios.post('/user/sell', data, config);
     dispatch({ type: ITEM_SELL });
+    dispatch(set_alert('success', 'Item added for sale.'));
   } catch (error) {
-    console.log(error.response.data);
+    const err = error.response.data;
+    if (err) {
+      err.forEach((alert) => dispatch(set_alert('danger', alert.msg)));
+    }
     dispatch({ type: ITEM_SELL_FAIL });
   }
 };
@@ -75,8 +80,12 @@ export const buy_item = (pid) => async (dispatch) => {
   try {
     const res = await axios.put(`/user/${pid}/buy`);
     dispatch({ type: ITEM_BOUGHT, payload: res.data.item });
+    dispatch(set_alert('success', 'Item successfuly bought.'));
   } catch (error) {
-    console.log(error);
+    const err = error.response.data;
+    if (err) {
+      dispatch(set_alert('danger', err));
+    }
     dispatch({ type: ITEM_BOUGHT_FAIL });
   }
 };
