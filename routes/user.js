@@ -94,13 +94,17 @@ router.put('/:pid/buy', auth, async (req, res) => {
       return res.status(400).send('You cannot buy your own product!');
     }
     // add product in BUY[] of user
-    const user = await User.findById(req.user.id).select('buy');
+    const user = await User.findById(req.user.id).select(['buy', 'city']);
     user.buy.push({
       ItemId: req.params.pid,
       title: prod.title,
       cost_price: prod.cost_price,
     });
-
+    if (prod.city !== user.city) {
+      return res
+        .status(400)
+        .send('Cannot buy this item as it is not available in ypur city.');
+    }
     // remove item from seller's sell[]
     let seller = await User.findById(prod.seller).select('sell');
     let idx = seller.sell
