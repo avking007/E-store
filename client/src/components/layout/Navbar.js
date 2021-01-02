@@ -1,8 +1,23 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '../../actions/auth';
 
-function Navbar() {
+function Navbar({ isAuth, loading, logout }) {
+  const logoutHandler = () => {
+    logout();
+  };
   const guestlinks = (
+    <ul>
+      <li>
+        <Link to='/signup'>Signup</Link>
+      </li>
+      <li>
+        <Link to='/login'>Login</Link>
+      </li>
+    </ul>
+  );
+  const authLinks = (
     <ul>
       <li>
         <Link to='/products'>Buy</Link>
@@ -11,31 +26,30 @@ function Navbar() {
         <Link to='/sell'>Sell</Link>
       </li>
       <li>
-        <Link to='/signup'>Signup</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
         <Link to='/dashboard'>Profile</Link>
+      </li>
+      <li>
+        <Link to='/' onClick={logoutHandler}>
+          Logout
+        </Link>
       </li>
     </ul>
   );
-  //   const authLinks = (
-  //     <ul>
-  //       <li>Buy</li>
-  //       <li>Sell</li>
-  //       <li>Profile</li>
-  //     </ul>
-  //   );
   return (
     <div>
       <nav className='navbar bg-dark'>
         <Link to='/dashboard'>E-store</Link>
-        <Fragment>{guestlinks}</Fragment>
+        {isAuth && !loading ? (
+          <Fragment>{authLinks}</Fragment>
+        ) : (
+          <Fragment>{guestlinks}</Fragment>
+        )}
       </nav>
     </div>
   );
 }
-
-export default Navbar;
+export const mapper = (state) => ({
+  isAuth: state.user.isAuth,
+  loading: state.user.loading,
+});
+export default connect(mapper, { logout })(Navbar);
