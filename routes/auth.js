@@ -5,6 +5,19 @@ const User = require('../models/User');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('../config/default');
+const auth = require('../middleware/auth');
+
+// route auth/
+// access  private
+// desc  get user
+router.get('/', auth, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (error) {
+    return res.status(500).send('Server Error');
+  }
+});
 
 // route auth/signup
 // access  public
@@ -76,7 +89,7 @@ router.post(
 // route auth/login
 // access public
 // desc login user
-router.get(
+router.post(
   '/login',
   [
     check('email', 'Email is required').not().isEmpty(),
