@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { sell_item } from '../../actions/item';
+import { Redirect } from 'react-router-dom';
 
-function Sell() {
+function Sell({ sell_item, isAuth }) {
   const [formData, setformData] = useState({
     title: '',
     desc: '',
-    dop: '',
+    DOP: '',
     cost_price: '',
     sell_price: '',
   });
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    sell_item(formData);
     setformData({
       title: '',
       desc: '',
-      dop: '',
+      DOP: '',
       cost_price: '',
       sell_price: '',
     });
@@ -22,6 +25,9 @@ function Sell() {
   const changeHandler = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
+  if (!isAuth) {
+    return <Redirect to='/login' />;
+  }
   return (
     <div className='container'>
       <h2 className='header'>Sell your Item</h2>
@@ -49,14 +55,14 @@ function Sell() {
         <div className='form-group'>
           <input
             type='text'
-            name='dop'
+            name='DOP'
             placeholder='Enter Date of Purchase'
             onChange={(e) => changeHandler(e)}
             onFocus={(e) => {
               e.target.type = 'date';
             }}
             onBlur={(e) => (e.target.type = 'text')}
-            value={formData.dop}
+            value={formData.DOP}
           />
         </div>
 
@@ -85,5 +91,8 @@ function Sell() {
     </div>
   );
 }
+const mapper = (state) => ({
+  isAuth: state.user.isAuth,
+});
 
-export default Sell;
+export default connect(mapper, { sell_item })(Sell);
