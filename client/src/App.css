@@ -65,6 +65,21 @@
   transition: opacity 0.2s ease-in;
   outline: none;
 }
+
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-light {
+  background-color: var(--light-color);
+  color: #333;
+}
+
+.alert-primary,
 .bg-primary,
 .btn-primary {
   background-color: var(--primary-color);
@@ -72,6 +87,14 @@
 }
 .btn-inactive {
   background-color: var(--lighdark-color);
+  color: #fff;
+}
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+.alert-success {
+  background: var(--success-color);
   color: #fff;
 }
 
@@ -176,4 +199,8 @@ ul {
 }
 .medium {
   width: 50vw;
+}
+
+.opener {
+  cursor: pointer;
 }
