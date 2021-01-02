@@ -18,3 +18,5 @@ export const ITEM_SELL_FAIL = 'ITEM_SELL_FAIL';
 export const ITEM_LOADED = 'ITEM_LOADED';
 export const ITEM_FAIL = 'ITEM_FAIL';
 export const CLEAR_ITEM = 'CLEAR_ITEM';
+export const ITEM_BOUGHT = 'ITEM_BOUGHT';
+export const ITEM_BOUGHT_FAIL = 'ITEM_BOUGHT_FAIL';

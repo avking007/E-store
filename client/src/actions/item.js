@@ -3,6 +3,8 @@ import {
   ALL_LOADED,
   ALL_LOAD_FAIL,
   CLEAR_ITEM,
+  ITEM_BOUGHT,
+  ITEM_BOUGHT_FAIL,
   ITEM_FAIL,
   ITEM_LOADED,
   ITEM_SELL,
@@ -69,3 +71,12 @@ export const clear_item = () => async (dispatch) => {
 };
 
 // buy item
+export const buy_item = (pid) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/user/${pid}/buy`);
+    dispatch({ type: ITEM_BOUGHT, payload: res.data.item });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: ITEM_BOUGHT_FAIL });
+  }
+};
