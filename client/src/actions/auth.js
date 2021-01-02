@@ -62,7 +62,12 @@ export const signup = (formData) => async (dispatch) => {
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
     dispatch(loadUser());
   } catch (error) {
-    console.log(error);
+    const err = error.response.data.error;
+    if (err) {
+      err.forEach((error) => {
+        dispatch(set_alert('danger', error.msg));
+      });
+    }
     dispatch({ type: REGISTER_FAIL });
   }
 };

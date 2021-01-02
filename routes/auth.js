@@ -36,7 +36,7 @@ router.post(
   async (req, res) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.status(400).json({ msg: err.array() });
+      return res.status(400).json({ error: err.array() });
     }
     try {
       const { first_name, last_name, city, mob, email, password } = req.body;
@@ -59,7 +59,7 @@ router.post(
       const salt = await bycrpt.genSalt(10);
       const hashed = await bycrpt.hash(password, salt);
       user.password = hashed;
-
+      user.city = city.toUpperCase();
       // create user
       const newUser = new User(user);
       await newUser.save();
@@ -101,7 +101,7 @@ router.post(
   async (req, res) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.status(400).json({ msg: err.array() });
+      return res.status(400).json({ error: err.array() });
     }
     try {
       const { email, password } = req.body;
