@@ -7,7 +7,7 @@ function Product({ items, history }) {
 
   const disp = items.map((item) => (
     <div
-      className='container bg-primary'
+      className='container bg-primary opener'
       key={item._id}
       onClick={() => OpenItemHandler(item._id)}
     >
@@ -15,7 +15,7 @@ function Product({ items, history }) {
         {/* Title */}
         <h2>{item.title}</h2>
         {/* Desc */}
-        <small>Details : {item.desc}</small>
+        {item.desc && <small>Details : {item.desc}</small>}
         <small>Available in : {item.city}</small>
       </div>
       <div className='container__right'>
