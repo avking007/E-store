@@ -22,6 +22,7 @@ function Login({ isAuth, login }) {
       <form className='form' onSubmit={submitHandler}>
         <div className='form-group'>
           <input
+            required
             type='text'
             name='email'
             onChange={(e) => changeHandler(e)}
@@ -31,6 +32,7 @@ function Login({ isAuth, login }) {
         </div>
         <div className='form-group'>
           <input
+            required
             type='password'
             name='password'
             onChange={(e) => changeHandler(e)}

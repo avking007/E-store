@@ -36,6 +36,7 @@ function Signup({ isAuth, signup }) {
       <form className='form' onSubmit={submitHandler}>
         <div className='form-group'>
           <input
+            required
             type='text'
             placeholder='First Name'
             onChange={(e) => changeHandler(e)}
@@ -45,6 +46,7 @@ function Signup({ isAuth, signup }) {
         </div>
         <div className='form-group'>
           <input
+            required
             type='text'
             placeholder='Last Name'
             onChange={(e) => changeHandler(e)}
@@ -54,6 +56,7 @@ function Signup({ isAuth, signup }) {
         </div>
         <div className='form-group'>
           <input
+            required
             type='text'
             placeholder='Enter Mobile No.'
             onChange={(e) => changeHandler(e)}
@@ -63,6 +66,7 @@ function Signup({ isAuth, signup }) {
         </div>
         <div className='form-group'>
           <input
+            required
             type='text'
             placeholder='Enter City'
             onChange={(e) => changeHandler(e)}
@@ -73,6 +77,7 @@ function Signup({ isAuth, signup }) {
 
         <div className='form-group'>
           <input
+            required
             type='text'
             placeholder='Email Address'
             onChange={(e) => changeHandler(e)}
@@ -82,6 +87,7 @@ function Signup({ isAuth, signup }) {
         </div>
         <div className='form-group'>
           <input
+            required
             type='password'
             placeholder='Password'
             onChange={(e) => changeHandler(e)}
