@@ -8,8 +8,10 @@ function Dashboard() {
         <br />
         <table className='table'>
           <thead>
-            <th>Product</th>
-            <th>Purchase price</th>
+            <tr>
+              <th>Product</th>
+              <th>Purchase price</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
