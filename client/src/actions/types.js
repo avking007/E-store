@@ -7,3 +7,14 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const USER_LOADED = 'USER_LOADED';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
+
+// items
+export const ALL_LOADED = 'ALL_LOADED';
+export const ALL_LOAD_FAIL = 'ALL_LOAD_FAIL';
+export const LOAD_RELEVANT = 'LOAD_RELEVANT';
+export const LOAD_RELEVANT_FAIL = 'LOAD_RELEVANT_FAIL';
+export const ITEM_SELL = 'ITEM_SELL';
+export const ITEM_SELL_FAIL = 'ITEM_SELL_FAIL';
+export const ITEM_LOADED = 'ITEM_LOADED';
+export const ITEM_FAIL = 'ITEM_FAIL';
+export const CLEAR_ITEM = 'CLEAR_ITEM';
