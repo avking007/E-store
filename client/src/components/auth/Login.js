@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
-
-function Login() {
-  const [login, setlogin] = useState({ email: '', password: '' });
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
+import { Redirect } from 'react-router-dom';
+function Login({ isAuth, login }) {
+  const [formData, setformData] = useState({ email: '', password: '' });
   const changeHandler = (e) => {
-    setlogin({ ...login, [e.target.name]: e.target.value });
+    setformData({ ...formData, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(login);
-    setlogin({ email: '', password: '' });
+    login(formData);
+    setformData({ email: '', password: '' });
   };
+  if (isAuth) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <div className='container'>
       <h2>Login</h2>
@@ -20,7 +25,7 @@ function Login() {
             type='text'
             name='email'
             onChange={(e) => changeHandler(e)}
-            value={login.email}
+            value={formData.email}
             placeholder='Email'
           />
         </div>
@@ -29,7 +34,7 @@ function Login() {
             type='password'
             name='password'
             onChange={(e) => changeHandler(e)}
-            value={login.password}
+            value={formData.password}
             placeholder='Password'
           />
         </div>
@@ -39,5 +44,8 @@ function Login() {
     </div>
   );
 }
+export const mapper = (state) => ({
+  isAuth: state.user.isAuth,
+});
 
-export default Login;
+export default connect(mapper, { login })(Login);
