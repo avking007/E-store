@@ -68,5 +68,3 @@ Step 5: cd into client folder and execute "npm install"(without quotes).
 Step 6: cd back into main directory by executing "cd.."(without quotes).
 
 Step 7: Execute "npm run client" in one terminal and "npm run server" in another terminal.
-
-Step 8: Execute "npm run dev" in current directory.
