@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Purchase from './Purchase';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 
 function Dashboard({ isAuth, loading, user }) {
@@ -18,6 +18,10 @@ function Dashboard({ isAuth, loading, user }) {
           <i className='fas fa-user' /> {'  '}Welcome{' '}
           {user && user.first_name + ' ' + user.last_name}
         </p>
+        <br />
+        <Link to='/change_city' className='btn btn-primary city_change'>
+          Change city
+        </Link>
       </div>
       <div className='container'>
         <h2>Purchase History</h2>

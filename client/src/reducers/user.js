@@ -1,5 +1,7 @@
 import {
   AUTH_ERROR,
+  CITY_CHANGE_FAIL,
+  CITY_CHANGE_SUCCESS,
   ITEM_BOUGHT,
   ITEM_BOUGHT_FAIL,
   ITEM_SELL_FAIL,
@@ -43,6 +45,10 @@ export default function user(state = initState, action) {
       localStorage.removeItem('token');
       return { isAuth: false, loading: true, user: null, token: null };
 
+    case CITY_CHANGE_SUCCESS:
+      return { ...state, user: payload };
+
+    case CITY_CHANGE_FAIL:
     case ITEM_BOUGHT_FAIL:
     case ITEM_SELL_FAIL:
     default:

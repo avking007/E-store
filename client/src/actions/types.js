@@ -7,6 +7,8 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const USER_LOADED = 'USER_LOADED';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
+export const CITY_CHANGE_SUCCESS = 'CITY_CHANGE_SUCCESS';
+export const CITY_CHANGE_FAIL = 'CITY_CHANGE_FAIL';
 
 // items
 export const ALL_LOADED = 'ALL_LOADED';

@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { loadUser } from './actions/auth';
 import { setAuthToken } from './utils/setAuthToken';
 import Alert from './components/layout/Alert';
+import CityChange from './components/profile/CityChange';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -34,6 +35,7 @@ function App() {
             </div>
 
             <Switch>
+              <Route exact path='/change_city' component={CityChange} />
               <Route exact path='/' component={Login} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />

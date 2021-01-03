@@ -85,7 +85,9 @@
   background: var(--light-color);
   color: #333;
 }
-
+.city_change {
+  text-decoration: none;
+}
 .alert-light {
   background-color: var(--light-color);
   color: #333;

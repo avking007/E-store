@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {
   AUTH_ERROR,
+  CITY_CHANGE_FAIL,
+  CITY_CHANGE_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
@@ -78,5 +80,25 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL });
+  }
+};
+
+export const city_change = (city) => async (dispatch) => {
+  try {
+    const data = JSON.stringify({ city });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await axios.put('/user/city_change', data, config);
+    dispatch({ type: CITY_CHANGE_SUCCESS, payload: res.data });
+    dispatch(set_alert('success', 'City successfully changed'));
+  } catch (error) {
+    const err = error.response.data.msg;
+    if (err) {
+      err.forEach((alert) => dispatch(set_alert('danger', alert.msg)));
+    }
+    dispatch({ type: CITY_CHANGE_FAIL });
   }
 };

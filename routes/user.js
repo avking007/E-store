@@ -2,10 +2,44 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 const Item = require('../models/Item');
 const User = require('../models/User');
-
+const mongo = require('mongodb');
 const auth = require('../middleware/auth');
 
 const router = express.Router();
+
+// route user/city_change
+// access private
+// desc change user's city
+
+router.put(
+  '/city_change',
+  [auth, [check('city', 'City is required').not().isEmpty()]],
+  async (req, res) => {
+    const err = validationResult(req);
+    if (!err.isEmpty()) {
+      return res.status(400).json({ msg: err.array() });
+    }
+    try {
+      const { city } = req.body;
+      // change user city
+      const user = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: { city: city.toUpperCase() } },
+        { new: true }
+      );
+      // change city of all items sold by him
+      await Item.updateMany(
+        { seller: new mongo.ObjectID(req.user.id) },
+        { $set: { city: city.toUpperCase() } }
+      );
+
+      return res.json(user);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).status;
+    }
+  }
+);
 
 // Route user/sell
 // access private
