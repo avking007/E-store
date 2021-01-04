@@ -1,6 +1,5 @@
-## E-store
+# E-store
 
----
 
 ## Team members
 
