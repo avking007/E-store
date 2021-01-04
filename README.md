@@ -14,14 +14,14 @@ email : avanvarshney@gmail.com
 
 #
 
-- MongoDB : Database for storing document-based data.
+- MongoDB : Database for storing document-based data
 - Express.js : Backend Web Framework
 - React.js : Frontend Library
-- Node.js : Javascript runtime environment.
-- jsonwebtoken : A standard to securely authenticate HTTP requests.
+- Node.js : Javascript runtime environment
+- jsonwebtoken : A standard to securely authenticate HTTP requests
 - bycryptjs : A password hashing library
 - Redux : Javascript library for state management in React
-- Mongoose - Object-modeling tool for Node.js.
+- Mongoose - Object-modeling tool for Node.js
 
 ## Assumptions
 

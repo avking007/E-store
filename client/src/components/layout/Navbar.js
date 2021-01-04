@@ -38,9 +38,11 @@ function Navbar({ isAuth, loading, logout }) {
   return (
     <div>
       <nav className='navbar bg-dark'>
-        <Link to='/dashboard'>
-          <i className='fas fa-shopping-basket' /> {'  '}E-store
-        </Link>
+        <h1>
+          <Link to='/dashboard'>
+            <i className='fas fa-shopping-basket' /> {'  '}E-store
+          </Link>
+        </h1>
         {isAuth && !loading ? (
           <Fragment>{authLinks}</Fragment>
         ) : (
