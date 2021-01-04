@@ -29,7 +29,7 @@ email : avanvarshney@gmail.com
 
 1. Size of the database(i.e MongoDB) <= 512MB .
 2. User cannot buy his own product/products so they will not be displayed in the user's product search results.
-3. It is a web application so it might not view propperly in mobile view
+3. It is a web application so it might not view propperly in mobile view.
 
 ## Responsibilities
 
