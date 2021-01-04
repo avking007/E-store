@@ -12,7 +12,7 @@ email : avanvarshney@gmail.com
 
 ## Technologies Used
 
-#
+
 
 - MongoDB : Database for storing document-based data
 - Express.js : Backend Web Framework
@@ -25,7 +25,7 @@ email : avanvarshney@gmail.com
 
 ## Assumptions
 
-#
+
 
 1. Size of the database(i.e MongoDB) <= 512MB .
 2. User cannot buy his own product/products so they will not be displayed in the user's product search results.
