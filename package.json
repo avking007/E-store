@@ -1,7 +1,7 @@
 {
   "name": "e-store",
   "version": "1.0.0",
-  "description": "",
+  "description": "An online buy/sell store",
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/avking007/E-store.git"
   },
-  "author": "",
+  "author": "Anish Varshney",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/avking007/E-store/issues"
