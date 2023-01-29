@@ -7,7 +7,7 @@
     "server": "nodemon server",
     "start": "node server.js",
     "client":"npm start --prefix frontend",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Anish Varshney",
   "license": "ISC",
