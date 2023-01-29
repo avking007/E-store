@@ -1,20 +1,26 @@
 {
-  "name": "e-store",
+  "name": "e-store-backend",
   "version": "1.0.0",
-  "description": "An online buy/sell store",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
-    "start": "node backend/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/avking007/E-store.git"
+    "server": "nodemon server",
+    "start": "node server.js",
+    "client":"npm start --prefix frontend",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Anish Varshney",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/avking007/E-store/issues"
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^5.11.9",
+    "request": "^2.88.2"
   },
-  "homepage": "https://github.com/avking007/E-store#readme"
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
 }
