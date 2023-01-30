@@ -43,9 +43,9 @@ Both Frontend ( React for frontend and redux and thunk for state management ) an
 
 #
 
-Live Demo (hosted on heroku):
+Live Demo (hosted on Render):
 
-https://glacial-springs-84575.herokuapp.com/
+https://e-store-basic.onrender.com
 
 #
 
@@ -63,7 +63,7 @@ Step 3: open cmd in that directory.
 
 Step 4: Execute "npm install" (without quotes) in cmd in current directory.
 
-Step 5: cd into client folder and execute "npm install"(without quotes).
+Step 5: cd into frontend folder and execute "npm install"(without quotes).
 
 Step 6: cd back into main directory by executing "cd.."(without quotes).
 
